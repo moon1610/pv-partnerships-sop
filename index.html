@@ -238,15 +238,7 @@
   .tpl-icon{ width:30px; height:30px; color:var(--pv-red); }
   .tpl-title{ font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:var(--ink); }
   .tpl-desc{ font-size:13px; color:var(--ink-soft); line-height:1.5; flex:1; }
-  .tpl-download{
-    display:inline-flex; align-items:center; gap:6px; align-self:flex-start;
-    font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:500;
-    color:var(--pv-red); text-decoration:none; border:1px solid var(--pv-red-line);
-    background:var(--pv-red-soft); border-radius:7px; padding:7px 11px;
-    transition: border-color .15s ease, transform .15s ease;
-  }
-  .tpl-download:hover{ border-color:var(--pv-red); transform: translateY(-1px); }
-  .tpl-download svg{ width:13px; height:13px; }
+  .tpl-foot{ align-self:flex-start; }
   @media (max-width:720px){
     .tpl-grid{ grid-template-columns:1fr; }
   }
@@ -293,28 +285,37 @@
         <svg class="tpl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
         <div class="tpl-title">Meeting Minutes</div>
         <div class="tpl-desc">Header, agenda, discussion &amp; takeaways table, decisions, action-items table with owners and due dates, approval line.</div>
-        <a class="tpl-download" href="templates/PV-Meeting-Minutes-Template.docx" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
-          .docx
-        </a>
+        <div class="tpl-foot">
+          <a class="open-link" href="templates/PV-Meeting-Minutes-Template.docx" target="_blank" rel="noopener">
+            Open Meeting Minutes .docx
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+          </a>
+          <div class="source-note">Opens in a new tab — save from there.</div>
+        </div>
       </div>
       <div class="tpl-card">
         <svg class="tpl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 15 9l3 3-11 11H4v-3Z"/><path d="M13 11l3-3"/></svg>
         <div class="tpl-title">Partnership Proposal</div>
         <div class="tpl-desc">One-pager: the ask up front, SMART objective prompts, scope &amp; contributions table, timeline, risks, sign-off block.</div>
-        <a class="tpl-download" href="templates/PV-Partnership-Proposal-Template.docx" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
-          .docx
-        </a>
+        <div class="tpl-foot">
+          <a class="open-link" href="templates/PV-Partnership-Proposal-Template.docx" target="_blank" rel="noopener">
+            Open Partnership Proposal .docx
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+          </a>
+          <div class="source-note">Opens in a new tab — save from there.</div>
+        </div>
       </div>
       <div class="tpl-card">
         <svg class="tpl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
         <div class="tpl-title">MoU / Agreement</div>
         <div class="tpl-desc">13-clause template: recitals, scope, non-exclusivity, confidentiality, term &amp; termination, governing law, notices, signatures.</div>
-        <a class="tpl-download" href="templates/PV-MoU-Template.docx" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
-          .docx
-        </a>
+        <div class="tpl-foot">
+          <a class="open-link" href="templates/PV-MoU-Template.docx" target="_blank" rel="noopener">
+            Open MoU .docx
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+          </a>
+          <div class="source-note">Opens in a new tab — save from there.</div>
+        </div>
       </div>
     </div>
   </section>
