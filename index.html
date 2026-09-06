@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PV Partnerships SOP</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --paper:#faf6ef;
+    --ink:#201c16;
+    --ink-soft:#4a4335;
+    --muted:#7a7062;
+    --line:#e2d9c8;
+    --panel:#ffffff;
+    --pv-red:#9e2b3e;
+    --pv-red-soft:#f1dee1;
+    --pv-red-line:#dcb3ba;
+    --shadow: 0 1px 2px rgba(32,28,22,0.06), 0 8px 24px rgba(32,28,22,0.05);
+    --focus: 0 0 0 3px var(--pv-red-soft), 0 0 0 5px var(--pv-red);
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#17140f;
+      --ink:#f1ebdd;
+      --ink-soft:#d9d0bf;
+      --muted:#a89d89;
+      --line:#362f26;
+      --panel:#1f1b14;
+      --pv-red:#e2536a;
+      --pv-red-soft:#3a1e22;
+      --pv-red-line:#5c2c34;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.35);
+      --focus: 0 0 0 3px var(--pv-red-soft), 0 0 0 5px var(--pv-red);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#17140f;
+    --ink:#f1ebdd;
+    --ink-soft:#d9d0bf;
+    --muted:#a89d89;
+    --line:#362f26;
+    --panel:#1f1b14;
+    --pv-red:#e2536a;
+    --pv-red-soft:#3a1e22;
+    --pv-red-line:#5c2c34;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.35);
+    --focus: 0 0 0 3px var(--pv-red-soft), 0 0 0 5px var(--pv-red);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    padding: 40px 24px 64px;
+  }
+  .wrap{ max-width: 980px; margin: 0 auto; }
+
+  .masthead{
+    display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px; margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .mark{ display:flex; align-items:center; gap:10px; }
+  .mark svg{ flex:none; }
+  .mark-text{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height:1.05;
+    margin: 6px 0 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  .tagline{
+    font-style: italic;
+    color: var(--muted);
+    font-family:'Fraunces', serif;
+    font-size:16px;
+    max-width: 30ch;
+    text-align:right;
+  }
+
+  .intro{
+    color: var(--ink-soft);
+    max-width: 68ch;
+    line-height:1.6;
+    margin-bottom: 32px;
+    font-size: 15px;
+  }
+  .intro strong{ color:var(--ink); }
+
+  .rail{
+    display:flex; align-items:stretch; flex-wrap:wrap; gap:0;
+    margin-bottom: 28px;
+  }
+  .rail-item{ display:flex; align-items:center; }
+  .stage-btn{
+    font-family:'IBM Plex Sans', sans-serif;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display:flex; flex-direction:column; gap:6px;
+    width: 128px;
+    cursor:pointer;
+    color: var(--ink);
+    text-align:left;
+    box-shadow: var(--shadow);
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .stage-btn:hover{ border-color: var(--pv-red-line); transform: translateY(-1px); }
+  .stage-btn:focus-visible{ outline:none; box-shadow: var(--focus); }
+  .stage-btn[aria-pressed="true"]{
+    border-color: var(--pv-red);
+    background: var(--pv-red-soft);
+  }
+  .stage-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .stage-btn[aria-pressed="true"] .stage-num{ color: var(--pv-red); }
+  .stage-icon{ width:22px; height:22px; color:var(--ink-soft); }
+  .stage-btn[aria-pressed="true"] .stage-icon{ color:var(--pv-red); }
+  .stage-label{ font-size:13px; font-weight:600; line-height:1.25; }
+
+  .connector{
+    flex:none; width:26px; display:flex; align-items:center; justify-content:center;
+    color: var(--muted);
+    margin: 0 2px;
+  }
+  .connector svg{ width:100%; height:14px; }
+
+  .panel{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 28px 30px;
+  }
+  .panel-head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    margin-bottom: 6px;
+  }
+  .panel-title{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size: 24px;
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .panel-title .n{ color: var(--pv-red); font-family:'IBM Plex Mono', monospace; font-size:15px; font-weight:500; }
+  .role-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing:0.05em;
+    color: var(--pv-red);
+    background: var(--pv-red-soft);
+    border: 1px solid var(--pv-red-line);
+    border-radius: 999px;
+    padding: 4px 10px;
+    white-space:nowrap;
+  }
+  .summary{ color: var(--ink-soft); font-size:15px; line-height:1.6; margin: 10px 0 18px; max-width: 64ch; }
+
+  .field-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom: 18px; }
+  .field-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 5px 9px;
+  }
+
+  ul.bullets{ list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:10px; }
+  ul.bullets li{
+    position:relative; padding-left: 20px; font-size:14.5px; line-height:1.55; color:var(--ink);
+    max-width: 62ch;
+  }
+  ul.bullets li::before{
+    content:""; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:1px;
+    background: var(--pv-red);
+    transform: rotate(45deg);
+  }
+
+  .diagram-wrap{ margin: 6px 0 22px; overflow-x:auto; }
+  .diagram-wrap svg{ display:block; max-width:100%; height:auto; margin:0 auto; }
+  figcaption{ font-size:12.5px; color:var(--muted); text-align:center; margin-top:8px; font-style:italic; font-family:'Fraunces', serif; }
+
+  .open-link{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600; font-size:13.5px;
+    color: var(--pv-red);
+    text-decoration:none;
+    border-bottom: 1px solid var(--pv-red-line);
+    padding-bottom:2px;
+  }
+  .open-link:hover{ border-bottom-color: var(--pv-red); }
+  .open-link svg{ width:13px; height:13px; }
+  .source-note{ font-size:12px; color:var(--muted); margin-top:6px; }
+
+  footer{
+    margin-top: 32px; padding-top:18px; border-top:1px solid var(--line);
+    font-size:12.5px; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width:640px){
+    .masthead{ flex-direction:column; align-items:flex-start; }
+    .tagline{ text-align:left; }
+    .stage-btn{ width: 104px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .stage-btn{ transition:none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="mark">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,2 26,9 26,21 15,28 15,17" fill="var(--pv-red)"/>
+        <polygon points="15,2 4,9 4,21 15,28 15,17" fill="none" stroke="var(--pv-red)" stroke-width="1.6"/>
+      </svg>
+      <div>
+        <div class="mark-text">Protégé Ventures</div>
+        <h1>Partnerships SOP</h1>
+      </div>
+    </div>
+    <div class="tagline">First Believers,<br>Before the Hype</div>
+  </div>
+
+  <p class="intro">
+    The partnership journey, start to finish, as PV analysts actually run it — from the first cold email to a
+    renewal date on the dashboard. <strong>Click a stage</strong> to see how it's actually done; every stage links
+    back to the page that documents it in full.
+  </p>
+
+  <nav class="rail" aria-label="Partnership workflow stages">
+    <!-- rail items injected by JS -->
+  </nav>
+
+  <section class="panel" id="panel" aria-live="polite">
+    <!-- panel content injected by JS -->
+  </section>
+
+  <footer>
+    <span>26/27 cycle · Pipeline · People · Presence</span>
+    <span>One CRM underneath it all</span>
+  </footer>
+
+</div>
+
+<script>
+  const HANDBOOK_URL = "https://app.notion.com/p/3cd0c821d9ca80179a99db7b98bfd736";
+  const CRM_URL = "https://app.notion.com/p/39d0c821d9ca802a9d2bc2a4ba194543";
+
+  const ICONS = {
+    outreach: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3.5-7.1"/><path d="M3 4v5h5"/><path d="M8 12h8M8 9h5M8 15h5"/></svg>',
+    log: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.6"/><path d="M6 15c.6-1.6 1.8-2.4 2.5-2.4s1.9.8 2.5 2.4"/><path d="M14 9h4M14 12h4M14 15h4"/></svg>',
+    opportunity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.7V16h5.6v-.5c0-.7.3-1.3.8-1.7A6 6 0 0 0 12 3Z"/></svg>',
+    fit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3 21 21"/><path d="M8 10.5l1.8 1.8L13.5 8.5"/></svg>',
+    signoff: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 15 9l3 3-11 11H4v-3Z"/><path d="M13 11l3-3"/><path d="M3 21h4"/></svg>',
+    live: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>',
+    manage: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v5h5"/><path d="M20 20v-5h-5"/><path d="M5 15a7 7 0 0 0 12 4.9L20 19"/><path d="M19 9A7 7 0 0 0 7 4.1L4 5"/></svg>'
+  };
+
+  const CHEV = '<svg viewBox="0 0 24 14" preserveAspectRatio="none"><line x1="1" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.4"/><polygon points="18,3 23,7 18,11" fill="currentColor"/></svg>';
+
+  const SIGNOFF_SVG = `
+  <svg viewBox="0 0 620 700" role="img" aria-label="Sign-off protocol: Draft leads to Fit Check, Internal Review, then a Decision that Approves to Formalise, Sign-off and Log, Declines to a logged record, or Defers back to Internal Review.">
+    <defs>
+      <marker id="pv-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+        <polygon points="0,0 9,4 0,8" fill="currentColor"/>
+      </marker>
+    </defs>
+    <style>
+      .box{ fill:none; stroke:currentColor; stroke-width:1.4; }
+      .boxfill{ fill: var(--panel); }
+      .t1{ font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:14px; fill:currentColor; }
+      .t2{ font-family:'IBM Plex Mono',monospace; font-size:11px; fill:currentColor; opacity:0.72; }
+      .lbl{ font-family:'IBM Plex Mono',monospace; font-size:11px; fill:currentColor; opacity:0.8; }
+      .flow{ stroke:currentColor; stroke-width:1.4; fill:none; marker-end:url(#pv-arrow); }
+      .accent{ stroke: var(--pv-red); }
+      .accentfill{ fill: var(--pv-red); }
+    </style>
+
+    <rect class="box boxfill" x="210" y="16" width="200" height="56" rx="8"/>
+    <text class="t1" x="230" y="38">1 · Draft</text>
+    <text class="t2" x="230" y="56">One-page proposal</text>
+    <line class="flow" x1="310" y1="72" x2="310" y2="102"/>
+
+    <rect class="box boxfill" x="210" y="104" width="200" height="56" rx="8"/>
+    <text class="t1" x="230" y="126">2 · Fit Check</text>
+    <text class="t2" x="230" y="144">Why + Partner Fit</text>
+    <line class="flow" x1="310" y1="160" x2="310" y2="190"/>
+
+    <rect class="box boxfill" x="210" y="192" width="200" height="56" rx="8"/>
+    <text class="t1" x="230" y="214">3 · Internal Review</text>
+    <text class="t2" x="230" y="232">Partnerships Lead</text>
+    <line class="flow" x1="310" y1="248" x2="310" y2="278"/>
+
+    <polygon class="box boxfill accent" points="310,280 380,335 310,390 240,335"/>
+    <text class="t1" x="310" y="340" text-anchor="middle">Decision</text>
+
+    <line class="flow" x1="310" y1="390" x2="310" y2="420"/>
+    <text class="lbl" x="318" y="410">Approve</text>
+
+    <rect class="box boxfill" x="210" y="422" width="200" height="56" rx="8"/>
+    <text class="t1" x="230" y="444">4 · Formalise</text>
+    <text class="t2" x="230" y="462">Draft MoU if needed</text>
+    <line class="flow" x1="310" y1="478" x2="310" y2="508"/>
+
+    <rect class="box boxfill" x="210" y="510" width="200" height="56" rx="8"/>
+    <text class="t1" x="230" y="532">5 · Sign-off</text>
+    <text class="t2" x="230" y="550">Authorised signatory</text>
+    <line class="flow" x1="310" y1="566" x2="310" y2="596"/>
+
+    <rect class="box accentfill" x="210" y="598" width="200" height="56" rx="8"/>
+    <text class="t1" x="230" y="620" fill="white" style="fill:white">6 · Log</text>
+    <text class="t2" x="230" y="638" style="fill:white;opacity:0.85">Owner + dates in CRM</text>
+
+    <path class="flow" d="M380,335 H500 V300"/>
+    <text class="lbl" x="392" y="326">Decline</text>
+    <rect class="box boxfill" x="420" y="240" width="160" height="60" rx="8" stroke-dasharray="4 3"/>
+    <text class="t1" x="436" y="264">Logged as Declined</text>
+    <text class="t2" x="436" y="282">Reasoning in CRM</text>
+
+    <path class="flow" d="M240,335 H140 V220 H208"/>
+    <text class="lbl" x="60" y="330">Defer</text>
+  </svg>`;
+
+  const STAGES = [
+    {
+      id:'outreach', num:'01', icon:'outreach', label:'Outreach',
+      role:'Any analyst', title:'Outreach',
+      summary:'First contact — a cold email, a warm intro, or a conversation at a networking event. How you show up here is how PV shows up.',
+      bullets:[
+        'Research the person or org first — open with something specific, not a template.',
+        'Keep the ask short: a two-line message beats a five-paragraph pitch.',
+        'At events, ask more than you pitch — and follow up within 48 hours.',
+        "Never promise an intro, a slot, or a partnership before it's cleared internally."
+      ],
+      link:{label:'Partnership Etiquette', url:HANDBOOK_URL, dest:'Partnerships Handbook'}
+    },
+    {
+      id:'log', num:'02', icon:'log', label:'Log Contact',
+      role:'Same day', title:'Log the Contact',
+      summary:"Every touch — cold or warm — gets a row in the Partnership Owners & Contact List before the day is out.",
+      fields:['Date Met','Owner','Connection Strength','Follow-up Status','Feeds Which Track'],
+      bullets:[
+        'Set Owner (who follows up) and Connection Strength (COLD / WARM / HOT).',
+        'Log Date Met, Last Contact Date, and a Follow Up Date if action is needed.',
+        'Already tied to a live initiative? Link them under Partnership Initiatives.'
+      ],
+      link:{label:'How to use this CRM', url:CRM_URL, dest:'CRM Homepage'}
+    },
+    {
+      id:'opportunity', num:'03', icon:'opportunity', label:'Spot an Opportunity',
+      role:'Before it’s a proposal', title:'Know Your Why',
+      summary:"Articulate which pillar this serves and frame the outcome as a SMART goal — before it goes anywhere near the team.",
+      bullets:[
+        'Which pillar does this serve — Pipeline, People, or Presence?',
+        'Specific, Measurable, Achievable, Relevant, Time-bound — one paragraph.',
+        "Can't compress it yet? Gather more information before it goes on the agenda."
+      ],
+      link:{label:'Proposing a Partnership · 01', url:HANDBOOK_URL, dest:'Partnerships Handbook'}
+    },
+    {
+      id:'fit', num:'04', icon:'fit', label:'Partner Fit Check',
+      role:'Every named partner', title:'Partner Fit Check',
+      summary:"Three questions, answered honestly, before a partner's name reaches the wider team.",
+      bullets:[
+        'Why this partner, specifically — not "they said yes."',
+        "What are they adding that PV can't do itself?",
+        'Would this make PV look like a subsidiary or affiliate? Run the Independence Test if so.'
+      ],
+      link:{label:'Proposing a Partnership · 02', url:HANDBOOK_URL, dest:'Partnerships Handbook'}
+    },
+    {
+      id:'signoff', num:'05', icon:'signoff', label:'Sign-off Protocol',
+      role:'Partnerships Lead', title:'Sign-off Protocol',
+      summary:'The formal steps from a one-page draft to a logged, owned partnership — and the paper trail each one leaves.',
+      diagram:true,
+      link:{label:'Proposing a Partnership · 05', url:HANDBOOK_URL, dest:'Partnerships Handbook'}
+    },
+    {
+      id:'live', num:'06', icon:'live', label:'Initiative Live',
+      role:'Once approved', title:'Initiative Goes Live',
+      summary:'The partnership becomes a row in the Partnership Initiatives tracker — scoped and owned from day one.',
+      fields:['Initiative Name','Pillar','Status','Owner','Priority','Effort Level','Date Added'],
+      bullets:[
+        'Priority, Effort Level, and Motive / Benefit to PV make it easy to compare initiatives at a glance.',
+        'Partner Fit Check Passed, Internally Reviewed, and MoU Required get ticked as each clears.'
+      ],
+      link:{label:'How to use this CRM', url:CRM_URL, dest:'CRM Homepage'}
+    },
+    {
+      id:'manage', num:'07', icon:'manage', label:'Ongoing Management',
+      role:'Reviewed monthly', title:'Ongoing Management',
+      summary:'Status stays current as the initiative moves, and every partner gets one anchor touchpoint a year plus quarterly light-touch contact.',
+      bullets:[
+        'Status: Scoping → Pending Decision → Formalising → Active → Renewal Due → Completed / Discontinued.',
+        'Next Touchpoint or Renewal Date keeps the relationship from going stale.',
+        'Everything rolls up into the CRM Homepage dashboard, reviewed monthly.'
+      ],
+      link:{label:'Partnerships CRM Dashboard', url:CRM_URL, dest:'CRM Homepage'}
+    }
+  ];
+
+  const rail = document.querySelector('.rail');
+  STAGES.forEach((s, i) => {
+    const item = document.createElement('div');
+    item.className = 'rail-item';
+    item.innerHTML = `
+      <button class="stage-btn" id="btn-${s.id}" aria-pressed="false" data-id="${s.id}">
+        <span class="stage-num">${s.num}</span>
+        <span class="stage-icon">${ICONS[s.icon]}</span>
+        <span class="stage-label">${s.label}</span>
+      </button>
+    `;
+    rail.appendChild(item);
+    if(i < STAGES.length - 1){
+      const conn = document.createElement('div');
+      conn.className = 'connector';
+      conn.innerHTML = CHEV;
+      conn.setAttribute('aria-hidden','true');
+      rail.appendChild(conn);
+    }
+  });
+
+  function renderPanel(stage){
+    const panel = document.getElementById('panel');
+    let fieldsHtml = '';
+    if(stage.fields){
+      fieldsHtml = `<div class="field-row">${stage.fields.map(f=>`<span class="field-chip">${f}</span>`).join('')}</div>`;
+    }
+    let bulletsHtml = '';
+    if(stage.bullets){
+      bulletsHtml = `<ul class="bullets">${stage.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+    }
+    let diagramHtml = '';
+    if(stage.diagram){
+      diagramHtml = `<figure class="diagram-wrap">${SIGNOFF_SVG}<figcaption>Draft → Fit Check → Internal Review → Decision (Approve / Decline / Defer) → Formalise → Sign-off → Log.</figcaption></figure>`;
+    }
+    panel.innerHTML = `
+      <div class="panel-head">
+        <div class="panel-title"><span class="n">${stage.num}</span> ${stage.title}</div>
+        <span class="role-chip">${stage.role}</span>
+      </div>
+      <p class="summary">${stage.summary}</p>
+      ${fieldsHtml}
+      ${bulletsHtml}
+      ${diagramHtml}
+      <a class="open-link" href="${stage.link.url}" target="_blank" rel="noopener">
+        Open ${stage.link.label}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+      </a>
+      <div class="source-note">Opens the ${stage.link.dest} in Notion.</div>
+    `;
+  }
+
+  function selectStage(id){
+    STAGES.forEach(s => {
+      document.getElementById('btn-'+s.id).setAttribute('aria-pressed', s.id === id ? 'true' : 'false');
+    });
+    renderPanel(STAGES.find(s => s.id === id));
+  }
+
+  rail.addEventListener('click', (e) => {
+    const btn = e.target.closest('.stage-btn');
+    if(!btn) return;
+    selectStage(btn.dataset.id);
+  });
+
+  selectStage(STAGES[0].id);
+</script>
+</body>
+</html>
