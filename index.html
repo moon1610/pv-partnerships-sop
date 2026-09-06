@@ -222,6 +222,34 @@
   @media (prefers-reduced-motion: reduce){
     .stage-btn{ transition:none; }
   }
+
+  .templates-section{ margin-top: 34px; }
+  .templates-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+  .templates-head h2{
+    font-family:'Fraunces', serif; font-weight:700; font-size:20px; margin:0; color:var(--ink);
+  }
+  .templates-head p{ margin:4px 0 0; font-size:13px; color:var(--muted); max-width:56ch; }
+  .tpl-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+  .tpl-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:18px 18px 16px; display:flex; flex-direction:column; gap:10px;
+    box-shadow: var(--shadow);
+  }
+  .tpl-icon{ width:30px; height:30px; color:var(--pv-red); }
+  .tpl-title{ font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:var(--ink); }
+  .tpl-desc{ font-size:13px; color:var(--ink-soft); line-height:1.5; flex:1; }
+  .tpl-download{
+    display:inline-flex; align-items:center; gap:6px; align-self:flex-start;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:500;
+    color:var(--pv-red); text-decoration:none; border:1px solid var(--pv-red-line);
+    background:var(--pv-red-soft); border-radius:7px; padding:7px 11px;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .tpl-download:hover{ border-color:var(--pv-red); transform: translateY(-1px); }
+  .tpl-download svg{ width:13px; height:13px; }
+  @media (max-width:720px){
+    .tpl-grid{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -255,6 +283,42 @@
     <!-- panel content injected by JS -->
   </section>
 
+  <section class="templates-section" aria-label="Downloadable templates">
+    <div class="templates-head">
+      <h2>Templates</h2>
+      <p>Fill-in-the-blank Word documents — professional-grade structure, PV's own clauses and voice. Open in Word, fill in the brackets.</p>
+    </div>
+    <div class="tpl-grid">
+      <div class="tpl-card">
+        <svg class="tpl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        <div class="tpl-title">Meeting Minutes</div>
+        <div class="tpl-desc">Header, agenda, discussion &amp; takeaways table, decisions, action-items table with owners and due dates, approval line.</div>
+        <a class="tpl-download" href="templates/PV-Meeting-Minutes-Template.docx" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
+          .docx
+        </a>
+      </div>
+      <div class="tpl-card">
+        <svg class="tpl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 15 9l3 3-11 11H4v-3Z"/><path d="M13 11l3-3"/></svg>
+        <div class="tpl-title">Partnership Proposal</div>
+        <div class="tpl-desc">One-pager: the ask up front, SMART objective prompts, scope &amp; contributions table, timeline, risks, sign-off block.</div>
+        <a class="tpl-download" href="templates/PV-Partnership-Proposal-Template.docx" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
+          .docx
+        </a>
+      </div>
+      <div class="tpl-card">
+        <svg class="tpl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+        <div class="tpl-title">MoU / Agreement</div>
+        <div class="tpl-desc">13-clause template: recitals, scope, non-exclusivity, confidentiality, term &amp; termination, governing law, notices, signatures.</div>
+        <a class="tpl-download" href="templates/PV-MoU-Template.docx" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
+          .docx
+        </a>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <span>26/27 cycle · Pipeline · People · Presence</span>
     <span>One CRM underneath it all</span>
@@ -265,6 +329,12 @@
 <script>
   const HANDBOOK_URL = "https://app.notion.com/p/3cd0c821d9ca80179a99db7b98bfd736";
   const CRM_URL = "https://app.notion.com/p/39d0c821d9ca802a9d2bc2a4ba194543";
+  const ETIQUETTE_URL = "https://app.notion.com/p/3cd0c821d9ca80179a99db7b98bfd736#3d30c821d9ca80da9315dd609041cf50";
+  const CRM_DASHBOARD_URL = "https://app.notion.com/p/39d0c821d9ca802a9d2bc2a4ba194543#3d30c821d9ca804d85e5ef131a7cca72";
+  const KNOW_YOUR_WHY_URL = "https://app.notion.com/p/3cd0c821d9ca80179a99db7b98bfd736#3cd0c821d9ca81568298f28a42df92f5";
+  const PARTNER_FIT_URL = "https://app.notion.com/p/3cd0c821d9ca80179a99db7b98bfd736#3cd0c821d9ca8183ad2af6482a540e18";
+  const SIGNOFF_PROTOCOL_URL = "https://app.notion.com/p/3cd0c821d9ca80179a99db7b98bfd736#3cd0c821d9ca81949c56d161d8e006df";
+  const CRM_HOWTO_URL = "https://app.notion.com/p/39d0c821d9ca802a9d2bc2a4ba194543#68d2fabab2f04c908cf7e705b8143534";
 
   const ICONS = {
     outreach: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3.5-7.1"/><path d="M3 4v5h5"/><path d="M8 12h8M8 9h5M8 15h5"/></svg>',
@@ -352,7 +422,7 @@
         'At events, ask more than you pitch — and follow up within 48 hours.',
         "Never promise an intro, a slot, or a partnership before it's cleared internally."
       ],
-      link:{label:'Partnership Etiquette', url:HANDBOOK_URL, dest:'Partnerships Handbook'}
+      link:{label:'Partnership Etiquette', url:ETIQUETTE_URL, dest:'Partnerships Handbook'}
     },
     {
       id:'log', num:'02', icon:'log', label:'Log Contact',
@@ -364,7 +434,7 @@
         'Log Date Met, Last Contact Date, and a Follow Up Date if action is needed.',
         'Already tied to a live initiative? Link them under Partnership Initiatives.'
       ],
-      link:{label:'How to use this CRM', url:CRM_URL, dest:'CRM Homepage'}
+      link:{label:'How to use this CRM', url:CRM_HOWTO_URL, dest:'CRM Homepage'}
     },
     {
       id:'opportunity', num:'03', icon:'opportunity', label:'Spot an Opportunity',
@@ -375,7 +445,7 @@
         'Specific, Measurable, Achievable, Relevant, Time-bound — one paragraph.',
         "Can't compress it yet? Gather more information before it goes on the agenda."
       ],
-      link:{label:'Proposing a Partnership · 01', url:HANDBOOK_URL, dest:'Partnerships Handbook'}
+      link:{label:'Proposing a Partnership · 01', url:KNOW_YOUR_WHY_URL, dest:'Partnerships Handbook'}
     },
     {
       id:'fit', num:'04', icon:'fit', label:'Partner Fit Check',
@@ -386,14 +456,14 @@
         "What are they adding that PV can't do itself?",
         'Would this make PV look like a subsidiary or affiliate? Run the Independence Test if so.'
       ],
-      link:{label:'Proposing a Partnership · 02', url:HANDBOOK_URL, dest:'Partnerships Handbook'}
+      link:{label:'Proposing a Partnership · 02', url:PARTNER_FIT_URL, dest:'Partnerships Handbook'}
     },
     {
       id:'signoff', num:'05', icon:'signoff', label:'Sign-off Protocol',
       role:'Partnerships Lead', title:'Sign-off Protocol',
       summary:'The formal steps from a one-page draft to a logged, owned partnership — and the paper trail each one leaves.',
       diagram:true,
-      link:{label:'Proposing a Partnership · 05', url:HANDBOOK_URL, dest:'Partnerships Handbook'}
+      link:{label:'Proposing a Partnership · 05', url:SIGNOFF_PROTOCOL_URL, dest:'Partnerships Handbook'}
     },
     {
       id:'live', num:'06', icon:'live', label:'Initiative Live',
@@ -404,7 +474,7 @@
         'Priority, Effort Level, and Motive / Benefit to PV make it easy to compare initiatives at a glance.',
         'Partner Fit Check Passed, Internally Reviewed, and MoU Required get ticked as each clears.'
       ],
-      link:{label:'How to use this CRM', url:CRM_URL, dest:'CRM Homepage'}
+      link:{label:'How to use this CRM', url:CRM_HOWTO_URL, dest:'CRM Homepage'}
     },
     {
       id:'manage', num:'07', icon:'manage', label:'Ongoing Management',
@@ -415,7 +485,7 @@
         'Next Touchpoint or Renewal Date keeps the relationship from going stale.',
         'Everything rolls up into the CRM Homepage dashboard, reviewed monthly.'
       ],
-      link:{label:'Partnerships CRM Dashboard', url:CRM_URL, dest:'CRM Homepage'}
+      link:{label:'Partnerships CRM Dashboard', url:CRM_DASHBOARD_URL, dest:'CRM Homepage'}
     }
   ];
 
